@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="/images/coins.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/dist.css">
+    <title>PleeFarmers</title>
 </head>
-<body>
-    <div id="wrapper">
+<body id="{{scriptName}}">
+    {{>navbar}}
+    <div class="container">
         {{{body}}}
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+<script src="/scripts/dist.js"></script>
 </html>

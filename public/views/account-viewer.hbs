@@ -1,0 +1,150 @@
+<div class="title-bar">
+    <span class="page-header">Accounts</span>
+    <hr>
+</div>
+
+<!--<div id="filters-row" class="row" style="margin: 0">-->
+    <!--<div class="input-field col s2">-->
+        <!--<select id="filter-select">-->
+            <!--<option value="" disabled selected>Select key</option>-->
+            <!--{{#each accountTable.headers}}-->
+                <!--<option value="{{this}}">{{this}}</option>-->
+            <!--{{/each}}-->
+        <!--</select>-->
+        <!--<label>Filter Key</label>-->
+    <!--</div>-->
+
+    <!--<div class="input-field col s6 offset-s4" >-->
+        <!--<div class="chip">tag</div>-->
+    <!--</div>-->
+<!--</div>-->
+{{>table accountTable}}
+{{>table-contextmenu}}
+
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <h4>Add Account</h4>
+        <form id="add-form">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="email" id="acc-email" name="email" class="validate" required="">
+                    <label for="acc-email">Email</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" id="acc-pass" name="password" class="validate" required="">
+                    <label for="acc-pass">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="acc-name" type="text" name="name" class="validate" required="">
+                    <label for="acc-name">Account Name</label>
+                </div>
+                <div class="input-field col s3">
+                    <input type="text" id="created" class="datepicker" name="created">
+                    <label for="created">Created On</label>
+                </div>
+                <div class="input-field col s3">
+                    <input type="text" id="memb" class="datepicker" name="memb">
+                    <label for="memb">Membership Start</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    <input type="text" id="pin" name="pin">
+                    <label for="pin">Pin</label>
+                </div>
+
+                <div class="input-field col s3 offset-s1">
+                    <label class="align-bot-checkbox" for="stocked">
+                        <input type="checkbox" id="stocked" name="stocked" value="true">
+                        <span>Stocked</span>
+                    </label>
+                </div>
+                <button id="acc-submit" class="btn waves-effect waves-light" type="submit" value="Submit">
+                    Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="show-modal" class="modal">
+    <div class="modal-content">
+        <h4><span class="sel-item"></span></h4>
+        <form id="update-form">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input disabled class="display-field" name="_id" type="text" id="show-id">
+                    <label for="show-id">Id</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" disabled class="display-field" name="name" id="show-name">
+                    <label for="show-name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="email" disabled class="display-field" name="email" id="show-email">
+                    <label for="show-email">Email</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" disabled class="display-field" name="password" id="show-password">
+                    <label for="show-password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    <input type="text" disabled class="display-field" name="status" id="show-status">
+                    <label for="show-status">Status</label>
+                </div>
+                <div class="input-field col s2">
+                    <input type="text" disabled class="display-field" name="pin" id="show-pin">
+                    <label for="show-pin">Pin</label>
+                </div>
+                <div class="input-field col s3">
+                    <input type="text" disabled class="display-field datepicker" name="created" id="show-created">
+                    <label for="show-created">Created</label>
+                </div>
+                <div class="input-field col s3">
+                    <input type="text" disabled class="display-field datepicker" name="memb" id="show-memb">
+                    <label for="show-memb">Membership Start</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input type="text" disabled class="display-field" name="lastStatusChange" id="show-status-change" >
+                    <label for="show-status-change">Last Status Change</label>
+                </div>
+                <div class="input-field col s4">
+                    <input type="text" disabled class="display-field" name="breakUntil" id="show-break">
+                    <label for="show-break">Break Until</label>
+                </div>
+                <div class="input-field col s3 offset-s1">
+                    <label class="align-bot-checkbox" for="show-stocked">
+                        <input id="show-stocked" type="checkbox" name="stocked" disabled value="true">
+                        <span>Stocked</span>
+                    </label>
+                </div>
+            </div>
+            <div id="submit-row" class="row center-align" style="display: none">
+                <button id="edit-submit" class="btn waves-effect waves-light" type="submit" value="Submit">
+                    Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="del-modal" class="modal">
+    <div class="modal-content">
+        <h4>Delete Account</h4>
+        <p>Are you sure you want to delete "<span class="sel-item"></span>"?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+        <a id="del-acc" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>

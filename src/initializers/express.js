@@ -13,7 +13,8 @@ module.exports = function(callback) {
         extname: 'hbs',
         defaultLayout: 'application',
         layoutsDir: paths.app.resolve(paths.app.views, 'layouts'),
-        partialsDir: paths.app.resolve(paths.app.views, 'partials')
+        partialsDir: paths.app.resolve(paths.app.views, 'partials'),
+        helpers: require('./handlebars-helpers')
     }));
 
     app.use(logger('dev'));

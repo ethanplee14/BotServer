@@ -4,7 +4,7 @@ module.exports = function(model, payload) {
     let attr = {};
 
     keys.forEach((ele) => {
-        if(ele in payload)
+        if(ele in payload && payload[ele] != '' || payload['ele'] != undefined || payload['ele'] != null)
             attr[ele] = payload[ele]
     });
     let mod = new model(attr);

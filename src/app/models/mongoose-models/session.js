@@ -3,9 +3,8 @@ let Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Session', new Schema({
     account: {type: Schema.Types.ObjectId, required: true, ref: 'Account'},
-    start: {type: Date},
+    start: {type: Date, default: Date.now},
     end: {type: Date},
-    breaks: [[]],
-    barsSmithed: {type: Number, required: true},
-    xpGained: Number
+    barsSmithed: {type: Number, default: 0},
+    xpGained: {type: Number, default: 0}
 }));

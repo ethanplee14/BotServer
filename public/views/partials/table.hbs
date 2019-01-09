@@ -1,0 +1,19 @@
+<table class="striped responsive-table" {{#if name}}id="{{name}}-table" {{/if}}>
+    <thead>
+    <tr>
+        {{#each headers}}
+            <th>{{this}}</th>
+        {{/each}}
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each rows as |row|}}
+        <tr {{#if ../name}}id="{{../name}}-row{{@index}}"{{/if}}>
+            {{#each row}}
+                <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

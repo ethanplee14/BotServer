@@ -1,6 +1,6 @@
 module.exports = {
     "get~ /": function(req, res) {
-        res.send(req.accountId);
+        res.render('index');
     }
 };
 

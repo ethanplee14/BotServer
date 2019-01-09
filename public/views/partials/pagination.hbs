@@ -1,0 +1,27 @@
+<ul class="pagination header-pagination">
+    <li {{#if pagination.arrows.left.disabled}} class="disabled" {{else}} class="waves-effect" {{/if}}>
+    <a {{#if pagination.arrows.left.query}}
+    href="/sessions?start={{pagination.arrows.left.query.start}}&end={{pagination.arrows.left.query.end}}"
+    {{/if}}>
+        <i class="material-icons">chevron_left</i>
+        </a>
+    </li>
+    {{#each pagination.pages}}
+        <li {{#if this.active}}
+                class="active">
+                <a>
+            {{else}}
+                class="waves-effect">
+                <a href="/sessions?start={{this.query.start}}&end={{this.query.end}}">
+            {{/if}}
+        {{inc @index}}
+        </a></li>
+    {{/each}}
+    <li {{#if pagination.arrows.right.disabled}} class="disabled" {{else}} class="waves-effect" {{/if}}>
+    <a {{#if pagination.arrows.right.query}}
+    href="/sessions?start={{pagination.arrows.right.query.start}}&end={{pagination.arrows.right.query.end}}"
+    {{/if}}>
+        <i class="material-icons">chevron_right</i>
+        </a>
+    </li>
+</ul>
