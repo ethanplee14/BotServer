@@ -1,15 +1,27 @@
 
-let _fieldsMapping = {
+const fieldsMapping = {
     'show-id': '_id',
     'show-name': 'name',
     'show-email': 'email',
     'show-password': 'password',
     'show-status': 'status',
     'show-pin': 'pin',
-    'show-created': 'created',
-    'show-memb': 'memb',
-    'show-status-change': 'lastStatusChange',
-    'show-break': 'breakUntil'
+    'show-created': {
+        prop: 'created',
+        parse: formatDate
+    },
+    'show-memb': {
+        prop: 'memb',
+        parse: formatDate
+    },
+    'show-status-change': {
+        prop: 'lastStatusChange',
+        parse: formatDateTime
+    },
+    'show-break': {
+        prop: 'breakUntil',
+        parse: formatDateTime
+    }
 };
 
 function updateShowModal() {
@@ -18,10 +30,12 @@ function updateShowModal() {
 }
 
 function populateShowModal(acc) {
-    for(const [key , val] of Object.entries(_fieldsMapping))
-        $(`#${key}`).val(acc[val] || '');
-
-    $('#show-stocked').attr('checked', acc['stocked']);
-
+    for(const [key , val] of Object.entries(fieldsMapping)) {
+        let newVal;
+        if (val instanceof Object && acc[val['prop']] && val.parse !== undefined)
+            newVal = val.parse(acc[val['prop']]);
+        $(`#${key}`).val(newVal || acc[val] || acc[val['prop']] || '');
+    }
     M.updateTextFields();
+    $('#show-stocked').attr('checked', acc['stocked']);
 }

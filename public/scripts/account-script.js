@@ -7,4 +7,5 @@ function accountScript() {
     registerAccountContextMenu();
     registerAddAcc();
     registerDelAcc();
+    registerEditAcc();
 }
