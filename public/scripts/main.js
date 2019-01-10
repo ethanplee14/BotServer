@@ -2,7 +2,8 @@
 $(function() {
     M.AutoInit();
     let routes = {
-        'accountScript': accountScript
+        'accountScript': accountScript,
+        'loginScript': loginScript
     };
     let route = $('body').attr('id');
 
