@@ -1,3 +1,5 @@
+import handleToken from './app/models/auth/handle-token'
+
 global.paths = require('./directories');
 global.get = require('./lib/requirer');
 
@@ -7,5 +9,7 @@ module.exports = initializers.express(function(app) {
     initializers.mongo('mongodb://admin:pleerice1@ds117061.mlab.com:17061/botsandbox');
     const router = require('./router');
     const controllers = initializers.controllers();
-    app.use(router(controllers));
+    app.use(router(controllers['unprotected']));
+    app.use(handleToken);
+    app.use(router(controllers['protected']));
 });

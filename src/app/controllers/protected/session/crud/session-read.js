@@ -1,4 +1,4 @@
-import Session from '../../../models/mongoose-models/session'
+import Session from '../../../../models/mongoose-models/session'
 
 module.exports = {
     'get~ /session/read/:id': (req, res) => {

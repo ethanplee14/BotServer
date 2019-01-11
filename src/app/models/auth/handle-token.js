@@ -1,21 +1,26 @@
 import util from "util";
 import fs from "fs";
 import jwt from "jsonwebtoken";
+import cookie from 'cookie'
 
-module.exports = function(req, res, callback) {
-    let token = req.headers['x-access-token'];
+module.exports = function(req, res, next) {
+    let cookieStr = req.headers['cookie'];
 
-    if(!token) {
-        res.status(400).send('No token provided');
+    if(!cookieStr || !cookie.parse(cookieStr)['token']) {
+        res.redirect('/login')
     } else {
+        let token = cookie.parse(cookieStr)['token'];
         let readFile = util.promisify(fs.readFile);
-        let verifier = util.promisify(jwt.verify);
+        let verify = util.promisify(jwt.verify);
         readFile(paths.res +'/jwt/public.pem', 'utf8')
-            .then((publicKey) => verifier(token, publicKey, {algorithm: 'RS256'}))
-            .then(callback)
+            .then((publicKey) => verify(token, publicKey, {algorithm: 'RS256'}))
+            .then((token) => {
+                req['token'] = token;
+                next()
+            })
             .catch(e => {
-                e.auth = false;
-                res.status(400).send(e);
+                console.log(e);
+                res.redirect('/login');
             });
     }
 };

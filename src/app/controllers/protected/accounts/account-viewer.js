@@ -1,5 +1,5 @@
-import Account from '../../models/mongoose-models/account'
-import accountsTable from '../../view-models/accounts-table'
+import Account from '../../../models/mongoose-models/account'
+import accountsTable from '../../../view-models/accounts-table'
 
 module.exports = {
     "get~ /accounts": function(req, res) {

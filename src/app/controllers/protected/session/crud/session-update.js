@@ -1,14 +1,11 @@
-import Session from '../../../models/mongoose-models/session'
-import tokenHandler from '../../../models/auth/handle-token'
-import update from '../../../models/update'
+import Session from '../../../../models/mongoose-models/session'
+import update from '../../../../models/update'
 
 module.exports = {
     "put~ /session/update/:id": function(req, res) {
-        tokenHandler(req, res, (decodedToken) => {
-            Session.findOne({account: decodedToken['_id'], _id: req.params.id})
-                .populate('account')
-                .exec((err, session) => updateSession(session, req, res));
-        });
+        Session.findOne({account: req['token']['_id'], _id: req.params.id})
+            .populate('account')
+            .exec((err, session) => updateSession(session, req, res));
     }
 };
 

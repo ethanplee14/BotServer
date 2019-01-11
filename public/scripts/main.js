@@ -10,3 +10,4 @@ $(function() {
     if(route in routes)
         routes[route]();
 });
+

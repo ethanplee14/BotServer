@@ -1,6 +1,5 @@
 import express from 'express'
 import logger from 'morgan'
-import cookieParser from 'cookie-parser'
 import hbs from 'express-handlebars'
 import stylus from 'stylus'
 
@@ -20,7 +19,6 @@ module.exports = function(callback) {
     app.use(logger('dev'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
-    app.use(cookieParser());
     app.use(stylus.middleware(paths.public));
     app.use(express.static(paths.public));
 

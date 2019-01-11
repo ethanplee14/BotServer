@@ -1,4 +1,4 @@
-import Account from '../../../models/mongoose-models/account'
+import Account from '../../../../models/mongoose-models/account'
 
 module.exports = {
     'delete~ /account/delete': function (req, res) {

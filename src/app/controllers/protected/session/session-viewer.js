@@ -1,6 +1,6 @@
-import Session from '../../models/mongoose-models/session'
-import sessionsTable from '../../view-models/sessions-table';
-import pagination from '../../view-models/pagination'
+import Session from '../../../models/mongoose-models/session'
+import sessionsTable from '../../../view-models/sessions-table';
+import pagination from '../../../view-models/pagination'
 
 module.exports = {
     "get~ /sessions": function (req, res) {

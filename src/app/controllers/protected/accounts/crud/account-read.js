@@ -1,4 +1,4 @@
-import Account from '../../../models/mongoose-models/account'
+import Account from '../../../../models/mongoose-models/account'
 
 module.exports = {
     'get~ /account/read': function(req, res) {

@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs'
+import cookie from 'cookie'
 import User from '../models/mongoose-models/user'
 import token from '../models/auth/rsa-token'
 
@@ -9,12 +10,19 @@ module.exports = {
             .then((acc) => bcrypt.compare(payload['password'], acc['password']))
             .then(verified => {
                 if(verified)
-                    return token({admin: 'Authorized'}, {
+                    return token({admin: 'true'}, {
                         algorithm: 'RS256',
                         expiresIn: '24h'
                     });
                 throw new Error()
-            }).then(token => res.send(token))
-            .catch(() => res.status(401).send("Unauthorized"));
+            }).then(token => {
+                res.setHeader('Set-Cookie', cookie.serialize('token', token, {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: true,
+                    maxAge: 60 * 60
+                }));
+                res.send("success")
+            }).catch(() => res.status(401).send("Unauthorized"));
     }
 };
