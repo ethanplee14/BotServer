@@ -30,14 +30,13 @@ function _registerSubmit() {
     });
 }
 
-function _registerCancel() {
-
-}
-
 function _registerOnClose() {
-    console.log("Registering close");
     $('#show-modal').modal({
         dismissible: true,
-        complete: function() {alert('closed')}
+        onCloseStart: function() {
+            $('#edit-btn').removeClass('scale-out');
+            $('#submit-row').removeClass('scale-in');
+            $('#update-form input').attr('disabled', true);
+        }
     });
 }

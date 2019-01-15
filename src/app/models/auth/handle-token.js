@@ -20,6 +20,7 @@ module.exports = function(req, res, next) {
             })
             .catch(e => {
                 console.log(e);
+                console.log("Token is unverified");
                 res.redirect('/login');
             });
     }

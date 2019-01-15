@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 
-
 let accountSchema = new mongoose.Schema({
     name: {type: String, required: true, max: 12, unique: true},
     email: {type: String, required: true},

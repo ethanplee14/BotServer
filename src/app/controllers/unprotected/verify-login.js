@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 import cookie from 'cookie'
-import User from '../models/mongoose-models/user'
-import token from '../models/auth/rsa-token'
+import User from '../../models/mongoose-models/user'
+import token from '../../models/auth/rsa-token'
 
 module.exports = {
     'post~ /verify-login': function(req, res) {
