@@ -1,4 +1,4 @@
-import Cannonballer from '../../../models/mongoose-models/cannonballer'
+import Cannonballer from '../../models/mongoose-models/cannonballer'
 
 module.exports = {
     'get~ /cannonballer/read': function(req, res) {

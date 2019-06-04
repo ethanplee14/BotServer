@@ -1,0 +1,31 @@
+
+<div class="title-bar">
+    <span class="page-header">Statistics</span>
+</div>
+<div class="divider"></div>
+
+<h5 class="section-header">Overall Stats</h5>
+<div class="section">
+    <div id="overall-stats">
+        Total Runtime: {{totalRuntime}}
+        <br>
+        Total Bars: {{totalBars}}
+        <br>
+        Total Cannonballs: {{totalCballs}}
+        <br>
+        Total Xp Gained: {{totalXp}}
+    </div>
+</div>
+
+<h5 class="section-header">Daily Stats</h5>
+<div class="section">
+    <input type="text" id="stats-day" class="datepicker">
+    {{#each stats as |stat|}}
+        <div class="acc-stats">
+            <h6 class="account-header">Pleebugger</h6>
+            Cannonballs Made: 500
+            <br>
+            Total Runtime: 5hrs 13min
+        </div>
+    {{/each}}
+</div>

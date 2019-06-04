@@ -1,25 +1,30 @@
+import FormatUtils from './format-utils'
 
 let days = ['Sun', 'Mon', "Tue", 'Wed', 'Thu', 'Fri', 'Sat'];
 
-module.exports = function(date) {
-    date = date instanceof Date ? date : new Date(date);
-    let formattedDate = '';
+let DateFormatter = function(date) {
+    this.date = date instanceof Date ? date : new Date(date);
+};
 
-    formattedDate += doubleDigit(date.getHours()) + ':';
-    formattedDate += doubleDigit(date.getMinutes()) + ':';
-    formattedDate += doubleDigit(date.getSeconds()) + ' ';
+DateFormatter.prototype.getTimeDate = function() {
+    return this.getTime() + ' ' + this.getDate();
+};
 
-    formattedDate += doubleDigit((date.getMonth())+1) + '/';
-    formattedDate += doubleDigit(date.getDate()) + '/';
-    formattedDate += date.getFullYear() + ' ';
-
-    formattedDate += days[date.getDay()];
-
+DateFormatter.prototype.getDate = function() {
+    let formattedDate = '';//fix this ugly shit
+    formattedDate += FormatUtils.doubleDigit((this.date.getMonth())+1) + '/';
+    formattedDate += FormatUtils.doubleDigit(this.date.getDate()) + '/';
+    formattedDate += this.date.getFullYear() + ' ';
+    formattedDate += days[this.date.getDay()];
     return formattedDate;
 };
 
-function doubleDigit(numb) {
-    if(numb < 10)
-        return '0' + numb.toString();
-    return numb.toString();
+DateFormatter.prototype.getTime = function() {
+    let formattedTime = '';
+    formattedTime += FormatUtils.doubleDigit(this.date.getHours()) + ':';
+    formattedTime += FormatUtils.doubleDigit(this.date.getMinutes()) + ':';
+    formattedTime += FormatUtils.doubleDigit(this.date.getSeconds());
+    return formattedTime;
 };
+
+module.exports = DateFormatter;

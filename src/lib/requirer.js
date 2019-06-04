@@ -1,7 +1,7 @@
 import glob from 'glob'
 
 module.exports = {
-    names: (folder) => glob.sync(`${folder}/**/*.js`),
+    names: (folder, pattern) => glob.sync(`${folder}${pattern||"/**/*.js"}`),
 
     file: function (path) {
         return require(`${path}`);
@@ -19,8 +19,8 @@ module.exports = {
         return modules;
     },
 
-    folder: function (path) {
-        return this.files.apply(this, this.names(path))
+    folder: function (path, pattern) {
+        return this.files.apply(this, this.names(path, pattern))
     },
 
     folders: function (pattern) {

@@ -10,8 +10,9 @@ module.exports = {
 
         Session.find({})
             .sort({start: -1})
-            .populate('account')
-            .lean()
+            // .populate('account')//If we need a reference to an account schema. for now we just
+                //add username
+            // .lean()
             .exec((err, sessions) => {
                 res.render("session-viewer", {
                     "pagination": pagination(sessions.length, query),

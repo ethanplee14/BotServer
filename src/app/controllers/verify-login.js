@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 import cookie from 'cookie'
-import User from '../../models/mongoose-models/user'
-import token from '../../models/auth/rsa-token'
+import User from '../models/mongoose-models/user'
+import token from '../models/auth/rsa-token'
 
 module.exports = {
     'post~ /verify-login': function(req, res) {
@@ -20,9 +20,9 @@ module.exports = {
                     httpOnly: true,
                     secure: true,
                     sameSite: true,
-                    maxAge: 60 * 60
+                    maxAge: 60 * 60 * 24
                 }));
-                res.send("success")
+                res.send("success");
             }).catch(() => res.status(401).send("Unauthorized"));
     }
 };

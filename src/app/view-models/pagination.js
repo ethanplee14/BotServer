@@ -24,7 +24,6 @@ function pages(pageCount, querySize, activeIndex) {
 
 function arrows(activeIndex, maxIndex, querySize) {
     let arrows = {};
-
     arrows.left = {'query': query(activeIndex - 1, querySize)};
     arrows.right = {'query': query(activeIndex + 1, querySize)};
 

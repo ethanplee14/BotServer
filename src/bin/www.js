@@ -8,10 +8,9 @@ const port = normalizePort(process.env.PORT || '3000');
 const server = require('https').createServer({
     key: fs.readFileSync('../../res/https/server.key'),
     cert: fs.readFileSync('../../res/https/server.cert')
-},app);
+}, app);
 
 app.set('port', port);
-
 server.listen(port);
 server.on('listening', () => log("Application loaded %o", server.address()));
 
